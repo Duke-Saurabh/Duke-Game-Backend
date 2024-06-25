@@ -2,6 +2,7 @@ import dotenv from 'dotenv'
 dotenv.config({path:'./.env'});
 
 import { connectdb } from './src/dbs/dbs.connection.js';
+import './socket.js';
 import { app,server } from './src/app.js';
 
 const port=process.env.PORT || 3000;
@@ -30,3 +31,6 @@ connectdb()
   .catch((error) => {
     console.error('Failed to connect to the database:', error);
   });
+
+  import './socket.js';
+
