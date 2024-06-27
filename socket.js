@@ -3,6 +3,8 @@ import { Server } from 'socket.io';
 import { joinGame } from './src/controllers/users.gameJoin.js';
 import { sendUsersGameMess } from './src/controllers/users.gameMessage.js';
 import { removeFromTeam } from './src/controllers/users.gameLeave.js';
+import { cardSelect } from './src/controllers/users.game.playerIndex.js';
+import { suffle } from './src/controllers/users.game.suffle.js';
 
 const io = new Server(server, {
     cors: {
@@ -16,6 +18,8 @@ io.on('connection', (socket) => {
 
     joinGame(socket, io);
     sendUsersGameMess(socket, io);
+    cardSelect(socket,io);
+    suffle(socket,io);
     
     socket.on('disconnect', () => {
         removeFromTeam(socket.id, io);
