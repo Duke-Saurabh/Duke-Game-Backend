@@ -14,6 +14,8 @@ const io = new Server(server, {
     }
 });
 
+console.log('nnnnnnnnnnnnnnnnnnn')
+
 io.on('connection', (socket) => {
     console.log('a user connected');
 
