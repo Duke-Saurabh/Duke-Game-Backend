@@ -14,27 +14,25 @@ const io = new Server(server, {
     }
 });
 
-console.log('nnnnnnnnnnnnnnnnnnn')
+console.log('Socket server initialized');
 
 io.on('connection', (socket) => {
-    console.log('a user connected');
+    console.log('A user connected:', socket.id);
 
     joinGame(socket, io);
     sendUsersGameMess(socket, io);
-    cardSelect(socket,io);
-    suffle(socket,io);
-    playerSelected(socket,io);
+    cardSelect(socket, io);
+    suffle(socket, io);
+    playerSelected(socket, io);
     
     socket.on('disconnect', () => {
         removeFromTeam(socket.id, io);
-        console.log('a user disconnected');
-    //     handleDisconnect(socket, io);
+        console.log('A user disconnected:', socket.id);
     });
 });
 
-// const handleDisconnect = (socket, io) => {
-//     // Your disconnect logic here
-//     // Ensure this function handles cleaning up the user's data
-// };
+io.on('error', (error) => {
+    console.error('Socket.io error:', error);
+});
 
 export { io };
