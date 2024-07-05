@@ -1,7 +1,9 @@
 let teams = {};
 
 const joinGame = (socket, io) => {
+    console.log('jpoin game 1')
     socket.on('joinGame', (user) => {
+        console.log('jpoin game 2')
         const team = user.teamSelected;
         const playerName = user.userName;
 

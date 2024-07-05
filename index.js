@@ -32,5 +32,5 @@ connectdb()
     console.error('Failed to connect to the database:', error);
   });
 
-  import './socket.js';
+  // import './socket.js';
 
